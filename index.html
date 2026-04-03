@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="public/images/logo-mark.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Premier academy for professional education, practical skills, and career-focused learning."
+    />
+    <title>H1 Academy — أكاديمية رياضية</title>
+    <!-- Tailwind via CDN so the page works without any build tools -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              /* Palette extracted from your H1 Academy logo (orange gradient + warm neutrals) */
+              brand: {
+                50: '#fff6f0',
+                100: '#ffe8da',
+                200: '#ffd0b3',
+                300: '#ffb386',
+                400: '#ff8d52',
+                500: '#f85800',
+                600: '#ea4c00',
+                700: '#c93e00',
+                800: '#9f3000',
+                900: '#5d1f00',
+                950: '#2e1000'
+              },
+              accent: {
+                DEFAULT: '#ff7a1a',
+                light: '#ffb07d',
+                dark: '#d94a00'
+              },
+              ink: '#14121f',
+              parchment: '#fcfbf9'
+            },
+            fontFamily: {
+              display: ['"Cairo"', '"Poppins"', 'system-ui', 'sans-serif'],
+              sans: ['"Cairo"', '"DM Sans"', 'system-ui', 'sans-serif']
+            },
+            boxShadow: {
+              soft: '0 4px 24px -4px rgba(15, 23, 42, 0.10), 0 10px 36px -12px rgba(15, 23, 42, 0.18)',
+              card: '0 2px 10px -4px rgba(15, 23, 42, 0.10), 0 18px 52px -18px rgba(15, 23, 42, 0.22)',
+              glow: '0 0 44px -10px rgba(248, 88, 0, 0.45)'
+            }
+          }
+        }
+      };
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800&family=DM+Sans:wght@400;500;700&family=Poppins:wght@500;600;700;800&display=swap"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Cairo', system-ui, sans-serif;
+      }
+      /* small tuning for RTL spacing */
+      .rtl-ltr {
+        direction: ltr;
+      }
+      .en-mode {
+        font-family: 'Poppins', system-ui, sans-serif;
+      }
+      .heading-strong {
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body class="bg-parchment text-ink overflow-x-hidden">
+    <!-- Navbar -->
+    <header
+      class="fixed inset-x-0 top-0 z-50 border-b border-brand-200/80 bg-parchment/90 shadow-soft backdrop-blur-md"
+    >
+      <nav
+        class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8"
+      >
+        <a href="#home" class="flex items-center gap-3 min-w-0">
+          <img
+            src="public/images/logo-mark.png"
+            alt="H1 Academy"
+            class="h-10 w-auto sm:h-11 shrink-0 object-contain object-left"
+          />
+          <span
+            class="hidden sm:inline-block font-display text-xl font-semibold tracking-tight text-brand-950 sm:text-2xl"
+          >
+            H1<span class="text-accent-dark"> Academy</span>
+          </span>
+        </a>
+        <ul class="hidden items-center gap-1 lg:flex">
+          <li><a href="#home" data-i18n="nav.home" class="rounded-lg px-3 py-2 text-sm font-medium text-brand-800 hover:bg-brand-100/80 hover:text-brand-950">الرئيسية</a></li>
+          <li><a href="#about" data-i18n="nav.about" class="rounded-lg px-3 py-2 text-sm font-medium text-brand-800 hover:bg-brand-100/80 hover:text-brand-950">عن الأكاديمية</a></li>
+          <li><a href="#services" data-i18n="nav.services" class="rounded-lg px-3 py-2 text-sm font-medium text-brand-800 hover:bg-brand-100/80 hover:text-brand-950">الخدمات</a></li>
+          <li><a href="#why-us" data-i18n="nav.why" class="rounded-lg px-3 py-2 text-sm font-medium text-brand-800 hover:bg-brand-100/80 hover:text-brand-950">لماذا نحن</a></li>
+          <li><a href="#contact" data-i18n="nav.contact" class="rounded-lg px-3 py-2 text-sm font-medium text-brand-800 hover:bg-brand-100/80 hover:text-brand-950">تواصل</a></li>
+        </ul>
+        <div class="hidden items-center gap-2 lg:flex">
+          <button id="lang-ar" class="rounded-lg border border-brand-200 bg-white px-3 py-2 text-xs font-bold text-brand-800">AR</button>
+          <button id="lang-en" class="rounded-lg border border-brand-200 bg-white px-3 py-2 text-xs font-bold text-brand-800">EN</button>
+          <a
+            href="#contact"
+            data-i18n="nav.cta"
+            class="rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-card hover:bg-brand-700 hover:shadow-glow"
+          >
+            احجز الآن
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="pt-20 sm:pt-24">
+      <!-- Hero -->
+      <section
+        id="home"
+        class="relative overflow-hidden bg-brand-950 pt-10 pb-16 sm:pt-14 sm:pb-20 lg:pt-20 lg:pb-28"
+      >
+        <div
+          class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100"
+          style="background-image: url('public/images/hero-bg.png')"
+        ></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-brand-950/65 via-brand-950/55 to-brand-950/85"
+        ></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-950/80 via-brand-950/25 to-transparent"></div>
+
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div
+            class="mx-auto flex max-w-4xl flex-col items-center text-center lg:mx-0 lg:max-w-3xl lg:items-start lg:text-right"
+          >
+            <div class="mb-6 lg:mb-8">
+              <img
+                src="public/images/logo-mark.png"
+                alt="H1 Academy"
+                class="mx-auto h-16 w-auto drop-shadow-lg lg:mx-0 lg:h-20"
+              />
+            </div>
+            <p
+              data-i18n="hero.kicker"
+              class="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-accent-light/95 sm:text-sm"
+            >
+              تدريب رياضي احترافي · خبرات عالمية
+            </p>
+            <h1
+              data-i18n="hero.title"
+              class="heading-strong font-display text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.25rem]"
+            >
+              أول أكاديمية رياضية
+              <span class="bg-gradient-to-l from-accent-light to-accent bg-clip-text text-transparent">
+                بخبرات عالمية
+              </span>
+            </h1>
+            <p
+              data-i18n="hero.desc"
+              class="mt-5 max-w-2xl text-base leading-relaxed text-brand-100/95 sm:text-lg"
+            >
+              في H1 Academy بنقدّم برامج تدريبية منظمة للأطفال والشباب والكبار داخل بيئة آمنة
+              ومدربين معتمدين. هدفنا بناء قوة، مرونة، انضباط وثقة—مع خطة واضحة للتطور.
+            </p>
+            <div
+              class="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start"
+            >
+              <a
+                href="#contact"
+                data-i18n="hero.cta1"
+                class="inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-ink shadow-glow hover:bg-accent-light"
+              >
+                احجز الآن
+              </a>
+              <a
+                href="#services"
+                data-i18n="hero.cta2"
+                class="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 px-10 py-8 text-lg font-semibold text-white backdrop-blur hover:border-accent/50 hover:bg-white/10"
+              >
+                اعرف خدماتنا
+              </a>
+            </div>
+            <dl
+              class="mt-12 grid w-full max-w-xl grid-cols-2 gap-4 border-t border-white/10 pt-8 text-right sm:max-w-2xl lg:max-w-none"
+            >
+              <div class="text-center lg:text-left">
+                <dt class="font-display text-2xl font-semibold text-white sm:text-3xl">
+                  +5
+                </dt>
+                <dd data-i18n="hero.stat1" class="mt-1 text-xs text-brand-200/90 sm:text-sm">
+                  ألعاب رياضية متنوعة
+                </dd>
+              </div>
+              <div class="text-center lg:text-left">
+                <dt class="font-display text-2xl font-semibold text-white sm:text-3xl">
+                  %100
+                </dt>
+                <dd data-i18n="hero.stat2" class="mt-1 text-xs text-brand-200/90 sm:text-sm">
+                  متابعة وتقييم مستمر
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="bg-gradient-to-b from-parchment to-brand-50/60 py-16 sm:py-20 lg:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-3xl text-center">
+            <p data-i18n="about.kicker" class="text-sm font-semibold uppercase tracking-[0.2em] text-accent-dark">
+              عن الأكاديمية
+            </p>
+            <h2
+              data-i18n="about.title"
+              class="heading-strong mt-3 font-display text-3xl font-semibold tracking-tight text-brand-950 sm:text-4xl"
+            >
+              تدريب منظّم… ونتائج تُلاحظ من أول شهر
+            </h2>
+            <p data-i18n="about.desc" class="mt-5 text-base leading-relaxed text-brand-700 sm:text-lg">
+              في H1 Academy بنركز على الجودة قبل العدد: مجموعات تدريب مناسبة، خطط مستوى واضحة،
+              وتدرّج سليم يحافظ على سلامة المتدرب ويطوّر مهاراته بشكل مستمر—سواء للّياقة أو
+              للفنون القتالية أو للجمباز.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services" class="bg-parchment py-16 sm:py-20 lg:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div class="max-w-2xl">
+              <p data-i18n="services.kicker" class="text-base sm:text-lg font-extrabold uppercase tracking-[0.14em] text-brand-700">
+                خدماتنا
+              </p>
+              <h2
+                data-i18n="services.title"
+                class="heading-strong mt-2 font-display text-3xl font-bold tracking-tight text-brand-950 sm:text-4xl"
+              >
+                برامج تدريب رياضية تناسب كل المستويات
+              </h2>
+              <p data-i18n="services.desc" class="mt-4 text-base leading-relaxed text-brand-700 sm:text-lg">
+                اختار اللعبة المناسبة، واحصل على تدريب احترافي بخطة واضحة وتقييم مستمر.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-3 xl:gap-8">
+            <article
+              class="group relative flex flex-col overflow-hidden rounded-2xl border border-brand-200/90 bg-white shadow-soft transition hover:-translate-y-1 hover:border-accent/50 hover:shadow-card"
+            >
+              <div class="relative aspect-[4/3] overflow-hidden bg-brand-100">
+                <img
+                  src="public/images/service-1.png"
+                  alt="Taekwondo"
+                  class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
+                />
+                <span class="absolute left-4 top-4 inline-flex rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-900 shadow-sm">01</span>
+              </div>
+              <div class="flex flex-1 flex-col p-5 sm:p-6">
+                <h3 data-i18n="svc.1.t" class="font-display text-xl font-bold leading-snug text-brand-950">تايكوندو</h3>
+                <p data-i18n="svc.1.d" class="mt-2 flex-1 text-sm leading-relaxed text-brand-700">
+                  تدريب تايكوندو منظم يطوّر الانضباط والمرونة والثقة بالنفس مع أساسيات فنية
+                  قوية للأطفال والناشئين.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="group relative flex flex-col overflow-hidden rounded-2xl border border-brand-200/90 bg-white shadow-soft transition hover:-translate-y-1 hover:border-accent/50 hover:shadow-card"
+            >
+              <div class="relative aspect-[4/3] overflow-hidden bg-brand-100">
+                <img
+                  src="public/images/service-2.png"
+                  alt="Gymnastics"
+                  class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
+                />
+                <span class="absolute left-4 top-4 inline-flex rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-900 shadow-sm">02</span>
+              </div>
+              <div class="flex flex-1 flex-col p-5 sm:p-6">
+                <h3 data-i18n="svc.2.t" class="font-display text-xl font-bold leading-snug text-brand-950">جمباز</h3>
+                <p data-i18n="svc.2.d" class="mt-2 flex-1 text-sm leading-relaxed text-brand-700">
+                  حصص جمباز احترافية لتحسين التوازن والتحكم في الجسم والتناسق الحركي ورفع
+                  الأداء الرياضي.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="group relative flex flex-col overflow-hidden rounded-2xl border border-brand-200/90 bg-white shadow-soft transition hover:-translate-y-1 hover:border-accent/50 hover:shadow-card"
+            >
+              <div class="relative aspect-[4/3] overflow-hidden bg-brand-100">
+                <img
+                  src="public/images/service-3.png"
+                  alt="Karate"
+                  class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
+                />
+                <span class="absolute left-4 top-4 inline-flex rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-900 shadow-sm">03</span>
+              </div>
+              <div class="flex flex-1 flex-col p-5 sm:p-6">
+                <h3 data-i18n="svc.3.t" class="font-display text-xl font-bold leading-snug text-brand-950">كاراتيه</h3>
+                <p data-i18n="svc.3.d" class="mt-2 flex-1 text-sm leading-relaxed text-brand-700">
+                  برامج كاراتيه متدرجة لبناء الانضباط ومهارات الدفاع عن النفس وتأسيس حركة
+                  صحيحة وقوية.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="group relative flex flex-col overflow-hidden rounded-2xl border border-brand-200/90 bg-white shadow-soft transition hover:-translate-y-1 hover:border-accent/50 hover:shadow-card"
+            >
+              <div class="relative aspect-[4/3] overflow-hidden bg-brand-100">
+                <img
+                  src="public/images/service-4.png"
+                  alt="Fitness"
+                  class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
+                />
+                <span class="absolute left-4 top-4 inline-flex rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-900 shadow-sm">04</span>
+              </div>
+              <div class="flex flex-1 flex-col p-5 sm:p-6">
+                <h3 data-i18n="svc.4.t" class="font-display text-xl font-bold leading-snug text-brand-950">لياقة بدنية</h3>
+                <p data-i18n="svc.4.d" class="mt-2 flex-1 text-sm leading-relaxed text-brand-700">
+                  برامج لياقة متكاملة تجمع بين التحمل والمرونة وتقوية العضلات لتحسين الصحة
+                  والأداء اليومي.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="group relative flex flex-col overflow-hidden rounded-2xl border border-brand-200/90 bg-white shadow-soft transition hover:-translate-y-1 hover:border-accent/50 hover:shadow-card sm:col-span-2 xl:col-span-1"
+            >
+              <div class="relative aspect-[4/3] overflow-hidden bg-brand-100">
+                <img
+                  src="public/images/service-5.png"
+                  alt="Kick Boxing"
+                  class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
+                />
+                <span class="absolute left-4 top-4 inline-flex rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-900 shadow-sm">05</span>
+              </div>
+              <div class="flex flex-1 flex-col p-5 sm:p-6">
+                <h3 data-i18n="svc.5.t" class="font-display text-xl font-bold leading-snug text-brand-950">كيك بوكسينج</h3>
+                <p data-i18n="svc.5.d" class="mt-2 flex-1 text-sm leading-relaxed text-brand-700">
+                  حصص كيك بوكسينج قوية لرفع اللياقة القتالية والسرعة والرشاقة والتحمل في
+                  بيئة تدريب آمنة ومنضبطة.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Us -->
+      <section id="why-us" class="bg-brand-950 py-16 sm:py-20 lg:py-24 text-white">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-3xl text-center">
+            <p data-i18n="why.kicker" class="text-sm font-semibold uppercase tracking-[0.2em] text-accent-light">
+              لماذا H1؟
+            </p>
+            <h2
+              data-i18n="why.title"
+              class="heading-strong mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl"
+            >
+              تدريب احترافي في بيئة آمنة ومحفّزة
+            </h2>
+            <p data-i18n="why.desc" class="mt-4 text-base leading-relaxed text-brand-100/90 sm:text-lg">
+              نركز على الانضباط، التطور المرحلي، والاهتمام الحقيقي بالمتدرب—مع متابعة دقيقة
+              لرفع المستوى وتحسين اللياقة والثقة بالنفس.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="bg-gradient-to-b from-brand-50/70 to-parchment py-16 sm:py-20 lg:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <p data-i18n="testi.kicker" class="text-sm font-semibold uppercase tracking-[0.2em] text-accent-dark">
+              آراء المتدربين
+            </p>
+            <h2
+              data-i18n="testi.title"
+              class="heading-strong mt-3 font-display text-3xl font-semibold tracking-tight text-brand-950 sm:text-4xl"
+            >
+              نتائج ملموسة… وثقة أكبر
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact CTA -->
+      <section id="contact" class="py-16 sm:py-20 lg:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div
+            class="relative overflow-hidden rounded-3xl border border-brand-200/90 bg-gradient-to-br from-brand-900 via-brand-900 to-brand-950 px-6 py-12 shadow-card sm:px-10 sm:py-14 lg:px-16 lg:py-16"
+          >
+            <div class="relative mx-auto max-w-3xl text-center">
+              <h2 data-i18n="contact.title" class="heading-strong font-display text-2xl font-semibold tracking-tight text-white text-balance sm:text-3xl lg:text-4xl">ابدأ رحلتك الرياضية الآن</h2>
+              <p data-i18n="contact.desc" class="mt-4 text-base leading-relaxed text-brand-100/95 sm:text-lg">للتواصل والاستفسار عن المواعيد والأسعار، تواصل معنا مباشرة وسنساعدك باختيار البرنامج الأنسب.</p>
+              <div
+                class="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center"
+              >
+                <a
+                  href="https://wa.me/201013288967"
+                  target="_blank"
+                  class="inline-flex items-center justify-center rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-brand-950 shadow-glow hover:bg-accent-light"
+                >
+                  واتساب: 01013288967
+                </a>
+                <a
+                  href="tel:+201091766437"
+                  class="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 px-8 py-3.5 text-base font-semibold text-white backdrop-blur hover:border-accent/50 hover:bg-white/10"
+                >
+                  اتصال: 01091766437
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-brand-200/80 bg-parchment">
+      <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <div class="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          <div class="lg:col-span-5">
+            <a href="#home" class="flex items-center gap-3">
+              <img
+                src="public/images/logo-mark.png"
+                alt="H1 Academy"
+                class="h-10 w-auto sm:h-11 shrink-0 object-contain object-left"
+              />
+            </a>
+            <p data-i18n="footer.desc" class="mt-4 max-w-md text-sm leading-relaxed text-brand-700">
+              H1 Academy — أكاديمية رياضية متخصصة في بناء المهارات واللياقة والانضباط من خلال
+              برامج تدريب منظمة ومدربين محترفين وبيئة آمنة.
+            </p>
+          </div>
+        </div>
+        <div
+          class="mt-12 flex flex-col items-start justify-between gap-4 border-t border-brand-200/80 pt-8 text-xs text-brand-600 sm:flex-row sm:items-center"
+        >
+          <p data-i18n="footer.copy">© <span id="year"></span> H1 Academy. جميع الحقوق محفوظة.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const i18n = {
+        ar: {
+          'nav.home': 'الرئيسية',
+          'nav.about': 'عن الأكاديمية',
+          'nav.services': 'الخدمات',
+          'nav.why': 'لماذا نحن',
+          'nav.contact': 'تواصل',
+          'nav.cta': 'احجز الآن',
+          'hero.kicker': 'تدريب رياضي احترافي · خبرات عالمية',
+          'hero.title': 'أول أكاديمية رياضية <span class="bg-gradient-to-l from-accent-light to-accent bg-clip-text text-transparent">بخبرات عالمية</span>',
+          'hero.desc': 'في H1 Academy بنقدّم برامج تدريبية منظمة للأطفال والشباب والكبار داخل بيئة آمنة ومدربين معتمدين. هدفنا بناء قوة، مرونة، انضباط وثقة—مع خطة واضحة للتطور.',
+          'hero.cta1': 'احجز الآن',
+          'hero.cta2': 'اعرف خدماتنا',
+          'hero.stat1': 'ألعاب رياضية متنوعة',
+          'hero.stat2': 'متابعة وتقييم مستمر',
+          'about.kicker': 'عن الأكاديمية',
+          'about.title': 'تدريب منظّم… ونتائج تُلاحظ من أول شهر',
+          'about.desc': 'في H1 Academy بنركز على الجودة قبل العدد: مجموعات تدريب مناسبة، خطط مستوى واضحة، وتدرّج سليم يحافظ على سلامة المتدرب ويطوّر مهاراته بشكل مستمر—سواء للّياقة أو للفنون القتالية أو للجمباز.',
+          'services.kicker': 'خدماتنا',
+          'services.title': 'برامج تدريب رياضية تناسب كل المستويات',
+          'services.desc': 'اختار اللعبة المناسبة، واحصل على تدريب احترافي بخطة واضحة وتقييم مستمر.',
+          'svc.1.t': 'تايكوندو',
+          'svc.1.d': 'تدريب تايكوندو منظم يطوّر الانضباط والمرونة والثقة بالنفس مع أساسيات فنية قوية للأطفال والناشئين.',
+          'svc.2.t': 'جمباز',
+          'svc.2.d': 'حصص جمباز احترافية لتحسين التوازن والتحكم في الجسم والتناسق الحركي ورفع الأداء الرياضي.',
+          'svc.3.t': 'كاراتيه',
+          'svc.3.d': 'برامج كاراتيه متدرجة لبناء الانضباط ومهارات الدفاع عن النفس وتأسيس حركة صحيحة وقوية.',
+          'svc.4.t': 'لياقة بدنية',
+          'svc.4.d': 'برامج لياقة متكاملة تجمع بين التحمل والمرونة وتقوية العضلات لتحسين الصحة والأداء اليومي.',
+          'svc.5.t': 'كيك بوكسينج',
+          'svc.5.d': 'حصص كيك بوكسينج قوية لرفع اللياقة القتالية والسرعة والرشاقة والتحمل في بيئة تدريب آمنة ومنضبطة.',
+          'why.kicker': 'لماذا H1؟',
+          'why.title': 'تدريب احترافي في بيئة آمنة ومحفّزة',
+          'why.desc': 'نركز على الانضباط، التطور المرحلي، والاهتمام الحقيقي بالمتدرب—مع متابعة دقيقة لرفع المستوى وتحسين اللياقة والثقة بالنفس.',
+          'testi.kicker': 'آراء المتدربين',
+          'testi.title': 'نتائج ملموسة… وثقة أكبر',
+          'contact.title': 'ابدأ رحلتك الرياضية الآن',
+          'contact.desc': 'للتواصل والاستفسار عن المواعيد والأسعار، تواصل معنا مباشرة وسنساعدك باختيار البرنامج الأنسب.',
+          'footer.desc': 'H1 Academy — أكاديمية رياضية متخصصة في بناء المهارات واللياقة والانضباط من خلال برامج تدريب منظمة ومدربين محترفين وبيئة آمنة.',
+          'footer.copy': '© <span id="year"></span> H1 Academy. جميع الحقوق محفوظة.'
+        },
+        en: {
+          'nav.home': 'Home',
+          'nav.about': 'About',
+          'nav.services': 'Services',
+          'nav.why': 'Why Us',
+          'nav.contact': 'Contact',
+          'nav.cta': 'Book Now',
+          'hero.kicker': 'Professional sports training · World-class experience',
+          'hero.title': 'The First Sports Academy <span class="bg-gradient-to-r from-accent-light to-accent bg-clip-text text-transparent">with Global Expertise</span>',
+          'hero.desc': 'At H1 Academy, we provide structured training programs for kids, youth, and adults in a safe environment with certified coaches.',
+          'hero.cta1': 'Book Now',
+          'hero.cta2': 'Explore Services',
+          'hero.stat1': '5+ Sports Programs',
+          'hero.stat2': '100% Ongoing Assessment',
+          'about.kicker': 'About the Academy',
+          'about.title': 'Structured Training, Real Results',
+          'about.desc': 'H1 Academy focuses on quality over quantity: suitable groups, clear level plans, and safe progressive development.',
+          'services.kicker': 'Our Services',
+          'services.title': 'Sports Programs for All Levels',
+          'services.desc': 'Choose your discipline and train with expert coaches under a clear development plan.',
+          'svc.1.t': 'Taekwondo',
+          'svc.1.d': 'Structured taekwondo classes to build discipline, flexibility, confidence, and strong fundamentals.',
+          'svc.2.t': 'Gymnastics',
+          'svc.2.d': 'Technique-based gymnastics sessions to improve balance, body control, coordination, and performance.',
+          'svc.3.t': 'Karate',
+          'svc.3.d': 'Progressive karate training focused on discipline, self-defense, and strong movement foundations.',
+          'svc.4.t': 'Fitness',
+          'svc.4.d': 'Smart fitness programs combining endurance, mobility, and strength for better daily performance.',
+          'svc.5.t': 'Kick Boxing',
+          'svc.5.d': 'High-energy kick boxing classes to boost stamina, speed, coordination, and combat fitness.',
+          'why.kicker': 'Why H1?',
+          'why.title': 'Professional Training in a Safe Environment',
+          'why.desc': 'We focus on discipline, progress tracking, and personalized coaching to unlock each athlete\'s potential.',
+          'testi.kicker': 'Student Feedback',
+          'testi.title': 'Visible Progress, Higher Confidence',
+          'contact.title': 'Start Your Athletic Journey Today',
+          'contact.desc': 'For schedules and pricing, contact us directly and we\'ll help you choose the right program.',
+          'footer.desc': 'H1 Academy is a specialized sports academy building skills, fitness, and discipline through structured training.',
+          'footer.copy': '© <span id="year"></span> H1 Academy. All rights reserved.'
+        }
+      };
+
+      function setLang(lang) {
+        document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        document.body.classList.toggle('en-mode', lang === 'en');
+        document.querySelectorAll('[data-i18n]').forEach((el) => {
+          const key = el.getAttribute('data-i18n');
+          if (i18n[lang][key]) el.innerHTML = i18n[lang][key];
+        });
+        document.getElementById('year').textContent = new Date().getFullYear();
+      }
+
+      document.getElementById('lang-ar')?.addEventListener('click', () => setLang('ar'));
+      document.getElementById('lang-en')?.addEventListener('click', () => setLang('en'));
+      setLang('ar');
+    </script>
+  </body>
+</html>
